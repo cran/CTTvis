@@ -1,7 +1,7 @@
 Package: CTTvis
 Type: Package
 Title: Visualize Item Metrics of the Classical Test Theory Framework
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: person(given = "Tarid",
                     family = "Wongvorachan",
                     role = c("aut", "cre", "cph"),
@@ -20,9 +20,9 @@ Suggests: knitr, rmarkdown, testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 NeedsCompilation: no
-Packaged: 2024-11-20 06:38:06 UTC; tarid
+Packaged: 2024-12-17 05:21:11 UTC; tarid
 Author: Tarid Wongvorachan [aut, cre, cph]
     (<https://orcid.org/0000-0002-9622-3780>)
 Maintainer: Tarid Wongvorachan <taridwongvorachan@gmail.com>
 Repository: CRAN
-Date/Publication: 2024-11-21 07:30:07 UTC
+Date/Publication: 2024-12-17 21:20:02 UTC

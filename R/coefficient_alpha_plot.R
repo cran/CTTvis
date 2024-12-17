@@ -23,7 +23,7 @@
 #'
 #' @export
 #' @importFrom CTT "itemAnalysis"
-#' @importFrom graphics abline text
+#' @importFrom graphics abline text axis
 
 coefficient_alpha_plot <-
   function(responses, title = "Coefficient Alpha", alpha_round = 3)
@@ -43,8 +43,8 @@ coefficient_alpha_plot <-
     plot(test_item.total,
          main = title,  # Use the title parameter here
          type = "p",
-         pch = 1,
-         cex = 2.8,
+         pch = 4,
+         cex = 1.8,
          col = "purple",
          ylab = "Coefficient Alpha if Dropped",
          xlab = "Item Number",
@@ -61,13 +61,23 @@ coefficient_alpha_plot <-
          cex = 0.9,
          pos = 4)  # Position to the right of the x-coordinate
 
+    item_names <- colnames(responses)  # Extract the item names
+
+    # Define a small vertical offset (e.g., 0.05)
+    offset <- 0.05
+
     # Identify and label items where dropping improves overall alpha
     outlier <- data.matrix(subset(test_item.total,
                                   subset = test_item.total[,2] > overall_alpha))
 
     if (nrow(outlier) > 0) {  # Only add text if there are outliers
-      text(outlier, paste("i", outlier[,1], sep = ""), col = "red", cex = .7)
+      text(x = outlier[, 1],
+           y = outlier[, 2] + offset,  # Add the offset to the y-coordinate
+           labels = item_names[outlier[, 1]],
+           col = "red",
+           cex = 0.7)
     }
 
     return(test_item.total[order(test_item.total$alpha_if_dropped),])
   }
+

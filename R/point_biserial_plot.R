@@ -36,8 +36,8 @@ point_biserial_plot <-
     plot(test_item.total,
          main = title,  # Use the title parameter here
          type = "p",
-         pch = 1,
-         cex = 2.8,
+         pch = 4,
+         cex = 1.8,
          col = "purple",
          ylab = "Point-Biserial correlation",
          xlab = "Item Number",
@@ -46,10 +46,19 @@ point_biserial_plot <-
 
     abline(h = cvpb, col = "red")
 
+    item_names <- colnames(responses)  # Extract the item names
+
+    # Define a small vertical offset (e.g., 0.05)
+    offset <- 0.05
+
     outlier <- data.matrix(subset(test_item.total,
                                   subset = test_item.total[,2] < cvpb))
 
-    text(outlier, paste("i", outlier[,1], sep = ""), col = "red", cex = .7)
+    text(x = outlier[, 1],
+         y = outlier[, 2] + offset,  # Add the offset to the y-coordinate
+         labels = item_names[outlier[, 1]],
+         col = "red",
+         cex = 0.7)
 
     return(test_item.total[order(test_item.total$point_biserial),])
   }
